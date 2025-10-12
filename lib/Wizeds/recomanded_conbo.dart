@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class RecomandedConbo extends StatelessWidget {
   String image;
   VoidCallback ontab;
-   RecomandedConbo({super.key,required this.image,required this.ontab});
+  Widget icon;
+   RecomandedConbo({super.key,required this.image,required this.ontab, required this.icon});
 
 
   @override
@@ -29,7 +30,7 @@ class RecomandedConbo extends StatelessWidget {
             children: [
               InkWell(
                   onTap: ontab
-                  ,child: Icon(Icons.favorite)),
+                  ,child: icon),
             ],
           ),
           Row(

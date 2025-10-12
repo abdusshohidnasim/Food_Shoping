@@ -8,13 +8,18 @@ class ItemProvider extends ChangeNotifier{
  // }
 
   void favoridItemAdd(int index){
-    faroridItem.add(prodected[index]);
+     Map<String, String> item = prodected[index];
+    if(faroridItem.contains(item)){
+       faroridItem.remove(item);
+    }else{
+      faroridItem.add(item);
+    }
+    notifyListeners();
+    
   }
 
 
-  List <Map<String,String>> faroridItem =[
-
-  ];
+  List <Map<String,String>> faroridItem =[];
 
 
   List <Map<String,String>> prodected =[
@@ -31,6 +36,9 @@ class ItemProvider extends ChangeNotifier{
     {"img":"assets/images/prodracted11.png"},
 
   ];
+
+
+
   void increment (){
     number=number+1;
     notifyListeners();

@@ -70,9 +70,12 @@ class _Page4State extends State<Page4> with SingleTickerProviderStateMixin {
                       ),
                     ),
                     Spacer(),
-                    InkWell(onTap: (){
-                      Navigator.pushNamed(context, "/page5");
-                    }, child: Icon(Icons.favorite, color: Colors.orange)),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/page5");
+                      },
+                      child: Icon(Icons.favorite, color: Colors.orange),
+                    ),
                     Icon(Icons.shopping_bag, color: Colors.orange),
                     SizedBox(width: 20),
                   ],
@@ -141,9 +144,17 @@ class _Page4State extends State<Page4> with SingleTickerProviderStateMixin {
                       itemBuilder: (BuildContext context, int index) {
                         var imageicdex = providermodel.prodected[index];
                         return RecomandedConbo(
-                          image: imageicdex["img"].toString(), ontab: () {
-                          providermodel.favoridItemAdd(index);
-                        },
+                          image: imageicdex["img"].toString(),
+                          ontab: () {
+                            providermodel.favoridItemAdd(index);
+                          },
+
+                          icon:
+                              providermodel.faroridItem.contains(
+                                providermodel.prodected[index],
+                              )
+                              ? Icon(Icons.favorite,color: Colors.red,)
+                              : Icon(Icons.favorite_outline,color: Colors.red,),
                         );
                       },
                     ),
@@ -151,34 +162,41 @@ class _Page4State extends State<Page4> with SingleTickerProviderStateMixin {
                 ),
                 // SizedBox(height: 3,),
                 Tabbar(),
-                    SizedBox(height: 20,),
+                SizedBox(height: 20),
 
-                   SizedBox(
-                      width: sceenwith,
-                      child: Container(
-                        height: sceenhight/5,
-                        width: 130,
+                SizedBox(
+                  width: sceenwith,
+                  child: Container(
+                    height: sceenhight / 5,
+                    width: 130,
 
-                        child: TabBarView(
-                          controller: _tabController,
-                          children: [
-                            for(int p=0;p<_tabController.length;p++)
-                              ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                  itemCount: providermodel.prodected.length,
-                                  itemBuilder:(context ,index){
-
-                                    return RecomandedConbo(image: providermodel.prodected[index]["img"].toString(),
-                                      ontab: () {
-                                      providermodel.favoridItemAdd(index);
-
-                                      },);
-                                  })
-                          ],
-                        ),
-                      ),
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        for (int p = 0; p < _tabController.length; p++)
+                          ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: providermodel.prodected.length,
+                            itemBuilder: (context, index) {
+                              return RecomandedConbo(
+                                image: providermodel.prodected[index]["img"]
+                                    .toString(),
+                                ontab: () {
+                                  providermodel.favoridItemAdd(index);
+                                },
+                                icon:
+                                    providermodel.faroridItem.contains(
+                                      providermodel.prodected[index],
+                                    )
+                                    ? Icon(Icons.favorite,color: Colors.red)
+                                    : Icon(Icons.favorite_outline,color: Colors.red),
+                              );
+                            },
+                          ),
+                      ],
                     ),
-
+                  ),
+                ),
               ],
             ),
           ),
