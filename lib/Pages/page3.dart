@@ -69,6 +69,7 @@ class _Page3State extends State<Page3> {
                         child: Icon(Icons.add, size: 30),
                       ),
                       Spacer(),
+
                       Text(
                         "\$ 2000",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
