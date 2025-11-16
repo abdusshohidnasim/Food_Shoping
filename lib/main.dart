@@ -9,11 +9,7 @@ import 'package:food_shoping_apps/SplashScreen.dart';
 
 import 'package:provider/provider.dart';
 
-
-
-
-
-
+//main
 void main() {
   runApp( MultiProvider(
 
